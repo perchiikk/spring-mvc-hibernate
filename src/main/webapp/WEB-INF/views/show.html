@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>About car</title>
+    <style>
+        .btn {
+            display: inline-block; /* Строчно-блочный элемент */
+            background: #CD5C5C; /* Розовый цвет фона */
+            color: #fff; /* Белый цвет текста */
+            font-size: 14pt;
+            padding: 1rem 1.5rem; /* Поля вокруг текста */
+            text-decoration: none; /* Убираем подчёркивание */
+            border-radius: 3px; /* Скругляем уголки */
+        }
+        input[type=submit] {
+            display: inline-block; /* Строчно-блочный элемент */
+            background: #3CB371; /* Зеленый цвет фона */
+            color: #fff; /* Белый цвет текста */
+            padding: 1rem 1.5rem; /* Поля вокруг текста */
+            border-radius: 3px; /* Скругляем уголки */
+            font-size: 14pt;
+        }
+    </style>
+</head>
+<body>
+<h1>About car</h1>
+<table border="1" width="40%" >
+    <tr>
+        <th>Info</th>
+    </tr>
+    <tr>
+        <td><p th:text="${'Id = ' + car.getId()}">VALUE</p></td>
+    </tr>
+    <tr>
+        <td><p th:text="${'Name = ' + car.getName()}">VALUE</p></td>
+    </tr>
+    <tr>
+        <td><p th:text="${'Number = ' + car.getNumber()}">VALUE</p></td>
+    </tr>
+</table>
+</br>
+<a th:href="@{/cars/{id}/edit(id=${car.getId()})}" class="btn">Edit</a>
+
+<form th:method="DELETE" th:action="@{/cars/{id}(id=${car.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>
